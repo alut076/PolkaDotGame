@@ -35,12 +35,6 @@ l2 = [0, window_height]
 #l2 = [-30, window_height + 30]
 
 
-class Player(pygame.sprite.Sprite):
-    def __init__(self,xpos,ypos):
-        self.xpos = xpos
-        self.ypos = ypos
-
-
 class Fish(pygame.sprite.Sprite):
     def __init__(self, colour, radius, x, y):
         self.x = x
@@ -99,7 +93,7 @@ def generateFish():
 
     return Fish1
 
-
+# Starting fish should probably get rid of this since the fish will automatically spawn in the first frame
 for i in range(10):
     f1 = generateFish()
     big_fishes.append(f1)
@@ -141,7 +135,7 @@ while True:
             sys.exit()
     window.fill(bg_colour)
 
-
+    #Ensures that there is the right amount of fish in the pond
     for bigfish in big_fishes:
         fish_movement(bigfish)
         bigfish.update()
