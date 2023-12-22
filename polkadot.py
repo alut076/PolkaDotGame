@@ -17,6 +17,7 @@ pygame.display.set_caption('MyGame')
 #bigfish_positions = []
 #bigfish_velocities = []
 big_fishes = []
+big_fishes_rects = []
 
 RED = (255,0,0)
 
@@ -42,13 +43,13 @@ class Fish(pygame.sprite.Sprite):
         self.pos = (self.x,self.y)
         self.radius = radius
         self.colour = colour
-        self.rect = pygame.Rect(window_width - (self.x + self.radius), window_height - (self.y + self.radius), self.radius, self.radius)
         self.vx = 0
         self.vy = 0
 
 
     def update(self):
         pygame.draw.circle(window, self.colour, (self.x, self.y), self.radius)
+        self.rect = pygame.Rect(window_width - (self.x + self.radius), window_height - (self.y + self.radius), self.radius, self.radius)
 
 
 def choose_velocity(fish):
@@ -126,7 +127,6 @@ def fish_spawn(fish):
     if len(big_fishes) < 20:
         f1 = generateFish()
         big_fishes.append(f1)
-
 
 while True:
     for event in pygame.event.get():
